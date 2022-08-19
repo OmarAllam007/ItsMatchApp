@@ -12,23 +12,23 @@ protocol ProducesCardViewModel {
 }
 
 class CardViewModel {
-    let imageNames:[String]
+    let userImageUrls:[String]
     let attributedText:NSAttributedString
     let textAlignment:NSTextAlignment
+    let uid:String
     
     
-    init(imageNames: [String], attributedText: NSAttributedString, textAlignment: NSTextAlignment) {
-        self.imageNames = imageNames
+    init(imageNames: [String], attributedText: NSAttributedString, textAlignment: NSTextAlignment, uid:String) {
+        self.userImageUrls = imageNames
         self.attributedText = attributedText
         self.textAlignment = textAlignment
+        self.uid = uid
     }
     
     
     private var imageIndex = 0 {
         didSet{
-            let imageUrl = self.imageNames[imageIndex]
-//            let image = UIImage(named:imageName)
-            
+            let imageUrl = self.userImageUrls[imageIndex]
             indexObserver?(imageIndex,imageUrl)
         }
     }
@@ -37,7 +37,7 @@ class CardViewModel {
     var indexObserver: ((Int,String?)->())?
     
     func toNextImage(){
-        imageIndex = min(imageIndex + 1, imageNames.count - 1)
+        imageIndex = min(imageIndex + 1, userImageUrls.count - 1)
     }
     
     func toPreviousImage(){

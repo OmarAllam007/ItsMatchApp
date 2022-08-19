@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		950A41AE28A4E0AC003141FA /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A41AD28A4E0AC003141FA /* SettingsController.swift */; };
+		950A41B028A4F577003141FA /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A41AF28A4F577003141FA /* SettingsCell.swift */; };
+		950A41B228A699C1003141FA /* AgeRangeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A41B128A699C0003141FA /* AgeRangeCell.swift */; };
+		950A41B828A7ADF5003141FA /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A41B728A7ADF5003141FA /* LoginController.swift */; };
+		950A41BA28A7ADFD003141FA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A41B928A7ADFD003141FA /* LoginViewModel.swift */; };
 		9523814528967F460038D1FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9523814428967F460038D1FD /* AppDelegate.swift */; };
 		9523814728967F460038D1FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9523814628967F460038D1FD /* SceneDelegate.swift */; };
 		9523814928967F460038D1FD /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9523814828967F460038D1FD /* HomeController.swift */; };
@@ -16,6 +21,8 @@
 		9523815A289680FA0038D1FD /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95238159289680FA0038D1FD /* Extensions+UIView.swift */; };
 		9523815D289691FA0038D1FD /* HomeControllerBottomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9523815C289691FA0038D1FD /* HomeControllerBottomStackView.swift */; };
 		9523815F289698040038D1FD /* HomeControllerTopStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9523815E289698040038D1FD /* HomeControllerTopStackView.swift */; };
+		952FC59128AB72E8005387D6 /* UserSwipingPhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952FC59028AB72E8005387D6 /* UserSwipingPhotosController.swift */; };
+		9584261A28AAB2C500431581 /* UserDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9584261928AAB2C500431581 /* UserDetailsController.swift */; };
 		958A03D3289908BE00D3F91A /* RegisterationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958A03D2289908BE00D3F91A /* RegisterationController.swift */; };
 		958A03D52899175A00D3F91A /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958A03D42899175A00D3F91A /* CustomTextField.swift */; };
 		958A03D7289A47A700D3F91A /* RegisterationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958A03D6289A47A700D3F91A /* RegisterationViewModel.swift */; };
@@ -30,6 +37,11 @@
 
 /* Begin PBXFileReference section */
 		0A556CB0951C453741B0C17F /* Pods_ItsMatchApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ItsMatchApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		950A41AD28A4E0AC003141FA /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		950A41AF28A4F577003141FA /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
+		950A41B128A699C0003141FA /* AgeRangeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeRangeCell.swift; sourceTree = "<group>"; };
+		950A41B728A7ADF5003141FA /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		950A41B928A7ADFD003141FA /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		9523814128967F460038D1FD /* ItsMatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItsMatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9523814428967F460038D1FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9523814628967F460038D1FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +53,8 @@
 		95238159289680FA0038D1FD /* Extensions+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
 		9523815C289691FA0038D1FD /* HomeControllerBottomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeControllerBottomStackView.swift; sourceTree = "<group>"; };
 		9523815E289698040038D1FD /* HomeControllerTopStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeControllerTopStackView.swift; sourceTree = "<group>"; };
+		952FC59028AB72E8005387D6 /* UserSwipingPhotosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSwipingPhotosController.swift; sourceTree = "<group>"; };
+		9584261928AAB2C500431581 /* UserDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsController.swift; sourceTree = "<group>"; };
 		958A03D2289908BE00D3F91A /* RegisterationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterationController.swift; sourceTree = "<group>"; };
 		958A03D42899175A00D3F91A /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		958A03D6289A47A700D3F91A /* RegisterationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterationViewModel.swift; sourceTree = "<group>"; };
@@ -127,8 +141,19 @@
 				9523815E289698040038D1FD /* HomeControllerTopStackView.swift */,
 				95F125F62896B21F009D5015 /* CardView.swift */,
 				958A03D42899175A00D3F91A /* CustomTextField.swift */,
+				950A41AF28A4F577003141FA /* SettingsCell.swift */,
+				950A41B128A699C0003141FA /* AgeRangeCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		952FC58F28AB72BD005387D6 /* UserDetailsViews */ = {
+			isa = PBXGroup;
+			children = (
+				9584261928AAB2C500431581 /* UserDetailsController.swift */,
+				952FC59028AB72E8005387D6 /* UserSwipingPhotosController.swift */,
+			);
+			path = UserDetailsViews;
 			sourceTree = "<group>";
 		};
 		95F125F82897A2D8009D5015 /* Model */ = {
@@ -143,8 +168,12 @@
 		95F125FB2897AF5A009D5015 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				952FC58F28AB72BD005387D6 /* UserDetailsViews */,
+				950A41B928A7ADFD003141FA /* LoginViewModel.swift */,
+				950A41B728A7ADF5003141FA /* LoginController.swift */,
 				9523814828967F460038D1FD /* HomeController.swift */,
 				958A03D2289908BE00D3F91A /* RegisterationController.swift */,
+				950A41AD28A4E0AC003141FA /* SettingsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -284,18 +313,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				95F125F72896B21F009D5015 /* CardView.swift in Sources */,
+				952FC59128AB72E8005387D6 /* UserSwipingPhotosController.swift in Sources */,
 				9523814928967F460038D1FD /* HomeController.swift in Sources */,
 				9523814528967F460038D1FD /* AppDelegate.swift in Sources */,
 				9523815F289698040038D1FD /* HomeControllerTopStackView.swift in Sources */,
 				95F125FA2897A2E3009D5015 /* User.swift in Sources */,
+				950A41B228A699C1003141FA /* AgeRangeCell.swift in Sources */,
 				958A03D3289908BE00D3F91A /* RegisterationController.swift in Sources */,
+				950A41AE28A4E0AC003141FA /* SettingsController.swift in Sources */,
 				9523815A289680FA0038D1FD /* Extensions+UIView.swift in Sources */,
 				9523814728967F460038D1FD /* SceneDelegate.swift in Sources */,
+				9584261A28AAB2C500431581 /* UserDetailsController.swift in Sources */,
 				958E6EA928A2279C00794C10 /* Bindable.swift in Sources */,
 				958A03D52899175A00D3F91A /* CustomTextField.swift in Sources */,
 				95F126002897E03A009D5015 /* Adertisement.swift in Sources */,
+				950A41B828A7ADF5003141FA /* LoginController.swift in Sources */,
 				9523815D289691FA0038D1FD /* HomeControllerBottomStackView.swift in Sources */,
 				95F125FE2897B074009D5015 /* CardViewModel.swift in Sources */,
+				950A41B028A4F577003141FA /* SettingsCell.swift in Sources */,
+				950A41BA28A7ADFD003141FA /* LoginViewModel.swift in Sources */,
 				958A03D7289A47A700D3F91A /* RegisterationViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

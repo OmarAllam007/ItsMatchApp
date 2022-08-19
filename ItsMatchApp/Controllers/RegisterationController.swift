@@ -20,7 +20,7 @@ extension RegisterationController:UIImagePickerControllerDelegate,UINavigationCo
         
         let image = info[.originalImage] as? UIImage
         vm.image.value = image
-        
+        vm.checkForm()
         dismiss(animated: true)
     }
 }
@@ -117,7 +117,7 @@ class RegisterationController: UIViewController {
                 return
             }
              
-            print("completed")
+            self?.dismiss(animated: true)
         }
         
     }
@@ -156,6 +156,8 @@ class RegisterationController: UIViewController {
         setupNotificationObserver()
         setupTapGesture()
         initObserverForm()
+        
+        navigationController?.isNavigationBarHidden = true
     }
     
     let vm = RegisterationViewModel()
@@ -232,6 +234,22 @@ class RegisterationController: UIViewController {
     
     
    
+    let goToLoginButton:UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Have account ? Sign In", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16,weight:.heavy)
+        button.addTarget(self, action: #selector(handleGoToLogin), for: .touchUpInside)
+        return button
+    }()
+    
+    
+    @objc fileprivate func handleGoToLogin(){
+        let loginController = LoginController()
+        loginController.view.backgroundColor = .yellow
+        navigationController?.pushViewController(loginController, animated: true)
+    }
+    
     fileprivate func setupLayout() {
         view.addSubview(parentStackView)
         
@@ -253,6 +271,12 @@ class RegisterationController: UIViewController {
                                bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 0, left: 40, bottom: 0, right: 40))
         parentStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         parentStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        
+        view.addSubview(goToLoginButton)
+        goToLoginButton.anchor(top: nil, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor)
+        
+        
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

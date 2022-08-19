@@ -18,7 +18,7 @@ struct Adertisement:ProducesCardViewModel{
         
         attributeString.append(NSAttributedString(string: "\n \(self.adPosterName)",attributes: [.font:UIFont.systemFont(ofSize: 20,weight: .regular)]))
         
-        return CardViewModel(imageNames: [self.posterPhotoName], attributedText: attributeString, textAlignment: .center)
+        return CardViewModel(imageNames: [self.posterPhotoName], attributedText: attributeString, textAlignment: .center,uid: "")
         
     }
 }

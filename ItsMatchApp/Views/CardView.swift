@@ -8,9 +8,20 @@
 import UIKit
 import SDWebImage
 
+
+protocol CardViewDelegate{
+    func didTapMoreInfo(cardViewModel:CardViewModel)
+    func didDismissCard(cardView:CardView)
+}
+
 class CardView: UIView {
     
-    fileprivate let imageView = UIImageView(image: UIImage(named: "profile_image"))
+    var nextCardView:CardView?
+    
+    var delegate:CardViewDelegate?
+    
+//    fileprivate let imageView = UIImageView(image: UIImage(named: "profile_image"))
+    
     fileprivate let informationLabel = UILabel()
     
     let gradientLayer = CAGradientLayer()
@@ -21,19 +32,18 @@ class CardView: UIView {
     
     fileprivate let deselectedColor:UIColor = .white.withAlphaComponent(0.1)
     
+    
+    fileprivate let userPhotosController = UserSwipingPhotosController(isCardViewMode: true)
+    
     var cardViewModel:CardViewModel! {
         didSet {
-            let imageName = cardViewModel.imageNames.first ?? ""
             
-            if let url = URL(string: imageName) {
-                imageView.sd_setImage(with: url)
-            }
-            
+            userPhotosController.cardViewModel = self.cardViewModel
             
             informationLabel.attributedText = cardViewModel.attributedText
             informationLabel.textAlignment = cardViewModel.textAlignment
             
-            (0..<cardViewModel.imageNames.count).forEach { _ in
+            (0..<cardViewModel.userImageUrls.count).forEach { _ in
                 let barView = UIView()
                 
                 barView.backgroundColor = deselectedColor
@@ -47,10 +57,6 @@ class CardView: UIView {
     
     fileprivate func setupImageObserver(){
         cardViewModel.indexObserver = { [weak self] index,image in
-            if let url = URL(string: image ?? "") {
-                self?.imageView.sd_setImage(with: url)
-            }
-            
             
             self?.barsStackView.arrangedSubviews.forEach { v in
                 v.backgroundColor = self?.deselectedColor
@@ -76,17 +82,27 @@ class CardView: UIView {
     
     
     
+    fileprivate let moreInfoButton:UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "info.circle.fill")?.withRenderingMode(.alwaysOriginal)
+            .withTintColor(.white), for: .normal)
+        button.addTarget(self, action: #selector(handleMoreInfo), for: .touchUpInside)
+        return button
+    }()
+    
+    
+   
     
     fileprivate func initUI() {
         clipsToBounds = true
         layer.cornerRadius = 10
         
-        imageView.contentMode = .scaleAspectFill
-        addSubview(imageView)
+        let photosView = userPhotosController.view!
         
-        imageView.fillSuperview()
+
+        addSubview(photosView)
         
-        setupTopBars()
+        photosView.fillSuperview()
         
         setupGradientLayer()
         
@@ -99,6 +115,8 @@ class CardView: UIView {
         informationLabel.font = .systemFont(ofSize: 34,weight: .heavy)
         informationLabel.numberOfLines = 0
         
+        addSubview(moreInfoButton)
+        moreInfoButton.anchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor,padding: .init(top: 0, left: 0, bottom: 16, right: 16),size: .init(width: 44, height: 44))
         
     }
     
@@ -129,38 +147,6 @@ class CardView: UIView {
     }
     
 
-    
-    @objc fileprivate func handleTap(gesture:UITapGestureRecognizer){
-        
-        //make everythin related to view related to view model state
-        let location = gesture.location(in: nil)
-        
-        let shouldShowNext = location.x > frame.width / 2 ? true : false
-        
-        if shouldShowNext {
-            cardViewModel.toNextImage()
-        }else{
-            cardViewModel.toPreviousImage()
-        }
-        
-    }
-    
-    @objc fileprivate func handleMove(gesture:UIPanGestureRecognizer){
-        switch gesture.state {
-        case .began:
-            // very important where there alot of animtations in the sametime
-            superview?.subviews.forEach({ view in
-                view.layer.removeAllAnimations()
-            })
-        case .changed:
-            handleChangingState(gesture)
-        case .ended:
-            handleEndedAnimation(gesture)
-        default:
-            ()
-        }
-    }
-    
     fileprivate func handleChangingState(_ gesture: UIPanGestureRecognizer) {
         // rotate
 
@@ -192,6 +178,7 @@ class CardView: UIView {
             self.transform = .identity
             if(shouldDismiss){
                 self.removeFromSuperview()
+                self.delegate?.didDismissCard(cardView: self)
             }
             
         }
@@ -201,6 +188,42 @@ class CardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //    MARK: OBJC =====
+    
+    @objc fileprivate func handleMoreInfo(){
+        delegate?.didTapMoreInfo(cardViewModel: self.cardViewModel)
+    }
     
     
+    @objc fileprivate func handleMove(gesture:UIPanGestureRecognizer){
+        switch gesture.state {
+        case .began:
+            // very important where there alot of animtations in the sametime
+            superview?.subviews.forEach({ view in
+                view.layer.removeAllAnimations()
+            })
+        case .changed:
+            handleChangingState(gesture)
+        case .ended:
+            handleEndedAnimation(gesture)
+        default:
+            ()
+        }
+    }
+    
+    
+    @objc fileprivate func handleTap(gesture:UITapGestureRecognizer){
+        
+        //make everythin related to view related to view model state
+        let location = gesture.location(in: nil)
+        
+        let shouldShowNext = location.x > frame.width / 2 ? true : false
+        
+        if shouldShowNext {
+            cardViewModel.toNextImage()
+        }else{
+            cardViewModel.toPreviousImage()
+        }
+        
+    }
 }
