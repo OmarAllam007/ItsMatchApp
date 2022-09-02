@@ -165,23 +165,43 @@ class CardView: UIView {
         let translationDirection:CGFloat = gesture.translation(in: nil).x > 0 ? 1 : -1
         let shouldDismiss = abs(gesture.translation(in: nil).x) > threshold
         
-        UIView.animate(withDuration: 0.75, delay: 0,
-                       usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1,options: .curveEaseOut) {
-            if shouldDismiss {
-                self.transform = CGAffineTransform(translationX: (self.frame.width + 100) * translationDirection, y: 0)
+        if shouldDismiss {
+            guard let homeController = self.delegate as? HomeController else { return }
+            
+            if translationDirection == 1 {
+                homeController.handleLike()
             }else{
+                homeController.handledisLike()
+            }
+            
+        }else {
+            UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.2,options: .curveEaseOut) {
                 self.transform = .identity
             }
-            
-            
-        }completion: { _ in
-            self.transform = .identity
-            if(shouldDismiss){
-                self.removeFromSuperview()
-                self.delegate?.didDismissCard(cardView: self)
-            }
-            
         }
+        
+       
+        
+        
+//
+//
+//        UIView.animate(withDuration: 0.75, delay: 0,
+//                       usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1,options: .curveEaseOut) {
+//            if shouldDismiss {
+//                self.transform = CGAffineTransform(translationX: (self.frame.width + 100) * translationDirection, y: 0)
+//            }else{
+//                self.transform = .identity
+//            }
+//
+//
+//        }completion: { _ in
+//            self.transform = .identity
+//            if(shouldDismiss){
+//                self.removeFromSuperview()
+//                self.delegate?.didDismissCard(cardView: self)
+//            }
+//
+//        }
     }
     
     required init?(coder: NSCoder) {

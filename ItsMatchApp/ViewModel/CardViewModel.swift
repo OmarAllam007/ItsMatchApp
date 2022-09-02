@@ -1,10 +1,3 @@
-//
-//  CardViewModel.swift
-//  ItsMatchApp
-//
-//  Created by Omar Khaled on 01/08/2022.
-//
-
 import UIKit
 
 protocol ProducesCardViewModel {
